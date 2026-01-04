@@ -1,0 +1,340 @@
+:root {
+    --loader-bg: #05060b;
+    --loader-primary: #133978;
+    --loader-accent: #ffd700;
+    --loader-text: #ffffff;
+}
+
+[data-theme="light"] {
+    --loader-bg: #f5f6fa;
+    --loader-primary: #133978;
+    --loader-accent: #133978;
+    --loader-text: #1a1b1e;
+}
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--loader-bg);
+    z-index: 100000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1), background-color 0.3s ease;
+}
+
+/* Background Effects */
+.loader-bg-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(19, 57, 120, 0.15) 0%, transparent 70%);
+    filter: blur(50px);
+    animation: glowMoving 10s infinite alternate;
+}
+
+[data-theme="light"] .loader-bg-glow {
+    background: radial-gradient(circle, rgba(19, 57, 120, 0.1) 0%, transparent 70%);
+}
+
+@keyframes glowMoving {
+    0% {
+        transform: translate(-20%, -20%);
+    }
+
+    100% {
+        transform: translate(20%, 20%);
+    }
+}
+
+/* Central Content */
+.loader-main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+/* Iconic Logo Animation */
+.logo-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 30px;
+}
+
+.logo-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+}
+
+[data-theme="light"] .logo-ring {
+    border-color: rgba(0, 0, 0, 0.05);
+}
+
+.logo-ring-active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    border-top-color: var(--loader-accent);
+    border-right-color: var(--loader-primary);
+    border-radius: 50%;
+    animation: ringSpin 2s linear infinite;
+}
+
+.logo-inner {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    background: rgba(19, 57, 120, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="light"] .logo-inner {
+    background: rgba(19, 57, 120, 0.05);
+    border-color: rgba(0, 0, 0, 0.05);
+}
+
+.tadb-core-logo {
+    width: 65%;
+    height: 65%;
+    color: var(--loader-accent);
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-8px) scale(1.1) rotate(5deg);
+    }
+
+    50% {
+        transform: translateY(-8px) scale(1.1) rotate(5deg);
+    }
+}
+
+.tadb-core-logo.img-mode {
+    background-color: var(--loader-accent);
+    -webkit-mask-image: url('assets/TADB.png');
+    mask-image: url('assets/TADB.png');
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    width: 85%;
+    height: 85%;
+}
+
+/* Responsive adjustments for new logo */
+@media (max-width: 412px) {
+    .tadb-core-logo {
+        width: 70%;
+        height: 70%;
+    }
+}
+
+/* Text Styling */
+.loader-text-wrap {
+    text-align: center;
+}
+
+.loader-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 900;
+    letter-spacing: 20px;
+    margin-right: -20px;
+    background: linear-gradient(135deg, #fff 0%, #133978 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+[data-theme="light"] .loader-title {
+    background: linear-gradient(135deg, var(--loader-primary) 0%, #000 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.loader-subtitle {
+    font-size: 0.9rem;
+    color: var(--loader-accent);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: 0.7;
+}
+
+/* Progress bar */
+.loader-progress-box {
+    width: 300px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin-top: 50px;
+    overflow: hidden;
+    position: relative;
+}
+
+[data-theme="light"] .loader-progress-box {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.loader-progress-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--loader-primary), var(--loader-accent));
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
+
+/* Entrance/Exit Effects */
+#preloader.loaded {
+    transform: translateY(-100%);
+}
+
+#preloader.loaded .loader-main {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.5s ease;
+}
+
+/* Animations */
+@keyframes ringSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes iconBounce {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-5px) scale(1.1);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .loader-title {
+        font-size: 3rem;
+        letter-spacing: 12px;
+    }
+
+    .logo-container {
+        width: 120px;
+        height: 120px;
+    }
+
+    .loader-progress-box {
+        width: 220px;
+    }
+}
+
+@media (max-width: 412px) {
+    .loader-title {
+        font-size: 1.8rem;
+        letter-spacing: 6px;
+        margin-right: -6px;
+    }
+
+    .loader-subtitle {
+        font-size: 0.6rem;
+        letter-spacing: 3px;
+    }
+
+    .logo-container {
+        width: 75px;
+        height: 75px;
+        margin-bottom: 15px;
+    }
+
+    .logo-inner i {
+        font-size: 1.8rem;
+    }
+
+    .logo-inner {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+    }
+
+    .loader-progress-box {
+        width: 140px;
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .loader-title {
+        font-size: 2.2rem;
+        letter-spacing: 8px;
+        margin-right: -8px;
+    }
+
+    .loader-subtitle {
+        font-size: 0.7rem;
+        letter-spacing: 4px;
+    }
+
+    .logo-container {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 20px;
+    }
+
+    .logo-inner i {
+        font-size: 2.2rem;
+    }
+
+    .logo-inner {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+    }
+
+    .loader-progress-box {
+        width: 160px;
+        margin-top: 30px;
+    }
+}
