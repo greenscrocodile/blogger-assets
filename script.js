@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Helper to get current mode
     function getCurrentMode() {
-        return document.documentElement.getAttribute('data-theme') || 'dark';
+        return document.documentElement.getAttribute('data-theme') || 'ruby';
     }
 
     // Helper to set mode
