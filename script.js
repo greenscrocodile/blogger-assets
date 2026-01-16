@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mode === 'dark') {
             document.documentElement.removeAttribute('data-theme');
         } else {
-            document.documentElement.setAttribute('data-theme', 'halloween');
+            document.documentElement.setAttribute('data-theme', mode);
         }
         localStorage.setItem('theme', mode);
         updateHint();
@@ -289,8 +289,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (docSnap.exists()) {
                     const data = docSnap.data();
                     const newActive = ['dark']; // Always include dark
-                    if (data.light !== false) newActive.push('light');
-                    if (data.christmas) newActive.push('christmas');
+                    //if (data.light !== false) newActive.push('light');
+                    if (data.christmas !== false) newActive.push('christmas');
                     if (data.ruby) newActive.push('ruby');
                     if (data.amethyst) newActive.push('amethyst');
                     if (data.winter) newActive.push('winter');
