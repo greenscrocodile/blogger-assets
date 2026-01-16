@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Helper to get current mode
     function getCurrentMode() {
-        return document.documentElement.getAttribute('halloween-theme') || 'dark';
+        return document.documentElement.getAttribute('dark-theme') || 'dark';
     }
 
     // Helper to set mode
@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mode === 'dark') {
             document.documentElement.removeAttribute('data-theme');
         } else {
-            document.documentElement.setAttribute('data-theme', mode);
+            document.documentElement.setAttribute('data-theme', 'halloween');
         }
         localStorage.setItem('theme', mode);
         updateHint();
