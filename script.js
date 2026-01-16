@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Theme Toggle Logic (Dynamic Firebase-Backed)
     const cord = document.getElementById('themeCord');
     const hint = document.getElementById('bulbHint');
-    let activeThemes = ['dark', 'light']; // Default fallback
+    let activeThemes = ['dark', 'light', 'christmas', 'ruby', 'amethyst', 'winter', 'festival', 'halloween', 'spring']; // Default fallback
     let hintTimeout;
 
     const themeNames = {
